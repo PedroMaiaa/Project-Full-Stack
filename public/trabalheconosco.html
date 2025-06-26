@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="stylesheet" href="Css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap"
+        rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body class="travar-scroll">
+
+    <header>
+        <div class="logo"><img src="Assets/2 _LOGO/_png (sem fundo)/2 Horizontal/[AJP] logo_horizontal_01.png"
+                alt="123">
+        </div>
+        <div class="btns">
+            <a href="index.html">Home</a>
+            <a href="empresa.html">Empresa</a>
+            <a href="serviços.html">Serviços</a>
+            <a href="trabalheconosco.html">Trabalhe Conosco</a>
+            <a href="proposta.html">Faça sua Proposta</a>
+
+        </div>
+    </header>
+    <main>
+        <section class="contato">
+            <div class="contato-banner">
+                <div class="overlay">
+                    <h1>Trabalhe Conosco</h1>
+                    <p>Sua Construtora de Confiança</p>
+                </div>
+            </div>
+            <div class="contato-wrapper">
+                <div class="formulario">
+                    <p class="intro-text">
+                        Precisa de ajuda ou quer tirar dúvidas? Fale conosco! Retornaremos o mais rápido possível.
+                    </p>
+                    <form id="form-contato">
+                        <input type="text" name="nome" placeholder="Seu nome" required />
+                        <div class="linha">
+                            <input type="email" name="email" placeholder="Seu email" required />
+                            <input type="tel" name="telefone" placeholder="Seu telefone" required />
+                        </div>
+                        <textarea name="mensagem" placeholder="Escreva sua mensagem" required></textarea>
+                        <div class="captcha">
+                            <div class="g-recaptcha" data-sitekey="SUA_SITE_KEY"></div>
+                        </div>
+                        <button id="btn-enviar" type="submit">ENVIAR MENSAGEM</button>
+                        <p id="mensagem-status"></p>
+                    </form>
+                </div>
+
+                <div class="info-contato">
+                    <div class="box">
+                    </div>
+                    <div class="box">
+                        <h3>ATENDIMENTO COMERCIAL</h3>
+                        <p>(81) 99710-2223</p>
+                    </div>
+                    <div class="box">
+                        <h3>ENDEREÇO ADMINISTRATIVO</h3>
+                        <p>Rua Oscar Carneiro, 38, Tamarineira<br>Recife/PE – 52110-031</p>
+                    </div>
+                    <div class="box">
+                        <h3>MATRIZ</h3>
+                        <p>Av. Presidente Kennedy, 1556, 1º andar<br>Peixinhos, Olinda/PE – 53.230-630</p>
+                    </div>
+                    <div class="box">
+                        <h3>HORÁRIO DE ATENDIMENTO</h3>
+                        <p>Segunda a Sexta – 8h às 18h<br><span class="fechado">Sábado e Domingo – Fechado</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="ajp-footer">
+            <div class="footer-container">
+                <div class="footer-top">
+                    <div class="footer-logo">
+                        <img src="Assets/2 _LOGO/_png (sem fundo)/4 Horizontal Tipográfica/[AJP] logo_horizontal_tipografica_01.png"
+                            alt="AJP Engenharia" />
+                    </div>
+
+                    <div class="footer-menus">
+                        <div class="footer-column">
+                            <h4>AJP ENGENHARIA</h4>
+                            <ul>
+                                <li><a href="index.html">Pagina Principal</a></li>
+                            <li><a href="empresa.html">Nossa Empresa</a></li>
+                            <li><a href="serviços.html">Obras Realizadas</a></li>
+                            <li><a href="proposta.html">Faça sua Proposta</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-column">
+                            <h4>SUPORTE</h4>
+                            <ul>
+                                <li><a href="contato.html">Fale Conosco</a></li>
+                                <li><a href="trabalheconosco.html">Trabalhe Conosco</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-social">
+                            <a href="https://www.instagram.com" target="_blank">
+                                <img src="Assets/instagram.png" alt="Instagram">
+                            </a>
+                            <a href="https://www.facebook.com" target="_blank">
+                                <img src="Assets/facebook.png" alt="Facebook">
+                            </a>
+                            <a href="https://www.linkedin.com" target="_blank">
+                                <img src="Assets/linkedin.png" alt="LinkedIn">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>© 2025 AJP Engenharia. Todos os direitos reservados.</p>
+                    <p>Email: <a href="mailto:contato@ajpengenharia.com.br">contato@ajpengenharia.com.br</a> | Tel: <a
+                            href="tel:+5581997102223">(81) 99710-2223</a></p>
+                </div>
+            </div>
+        </footer>
+
+
+
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="Js/email_form_handler.js"></script>
+
+
+</body>
+
+</html>
