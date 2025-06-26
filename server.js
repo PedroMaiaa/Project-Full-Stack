@@ -1,7 +1,9 @@
 const express = require('express');
 const path = require('path');
+
 const app = express();
-const port = 3000;
+
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -25,6 +27,7 @@ app.get('/proposta', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'proposta.html'));
 });
 
-app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(` Servidor estático iniciado com sucesso!`);
+  console.log(` Acessível na porta: ${PORT}`);
 });
