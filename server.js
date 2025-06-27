@@ -27,6 +27,7 @@ app.get('/proposta', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'proposta.html'));
 });
 
+//porta de entrada
 app.listen(PORT, '0.0.0.0', () => {
   console.log(` Servidor estático iniciado com sucesso!`);
   console.log(` Acessível na porta: ${PORT}`);

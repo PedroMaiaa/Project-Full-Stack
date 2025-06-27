@@ -38,16 +38,6 @@ header {
   text-shadow: 1px 1px 6px #F47A21;
 }
 
-/*.btns a:hover::after{
-width: 100%;
-height: 2px;
-background-color:#F9F1EF ;
-position: absolute;
-top: 0;
-bottom: 0;
-
-}*/
-
 /*Index comeca aqui*/
 
 /* sobre comeco*/
@@ -831,8 +821,6 @@ section li {
 }
 
 /* empresa termina aqui */
-
-
 
 
 /* footer*/
