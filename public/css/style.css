@@ -546,7 +546,7 @@ textarea {
 /* empresa comeca aqui */
 .ajp-sobre2 {
   position: relative;
-  background-image: url('../Assets/');
+  background-image: url('../Assets/f12.png');
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -618,83 +618,85 @@ section li {
   line-height: 1.6;
 }
 
-.atuacao ul,
-.big-numbers ul {
-  list-style: none;
-  padding: 0;
-}
-
-.atuacao li,
-.big-numbers li {
-  margin-bottom: 10px;
-}
-
-.equipe .membro {
-  margin-bottom: 25px;
-}
 
 .big-numbers-section {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  background-color: white;
-  font-family: 'Orbitron', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    background-color: #ffffff;
+}
+
+.big-numbers-box {
+    display: flex;
+    width: 90%;
+    height: 80vh;
+    border: 2px solid #ff7b00;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
 .big-numbers-left {
-  flex: 1 1 50%;
-  background-color: #f5f5f5;
-}
-
-.big-numbers-left img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    flex: 1;
+    background: url('../Assets/big.png') no-repeat center center;
+    background-size: cover;
 }
 
 .big-numbers-right {
-  flex: 1 1 50%;
-  padding: 60px 40px;
-  background-color: #fff;
-  position: relative;
-  border-left: 5px solid #ffa500;
+    flex: 1;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.big-numbers-right::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    background-color: #ff7b00;
 }
 
 .big-numbers-right h2 {
-  font-size: 2.5rem;
-  color: #ff7b00;
-  margin-bottom: 10px;
+    font-size: 3rem;
+    color: #ff7b00;
+    margin-bottom: 20px;
 }
 
-.subtitulo {
-  font-size: 1.2rem;
-  margin-bottom: 40px;
-  color: #222;
+.big-numbers-right .subtitulo {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    color: black;
 }
 
 .metricas {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 30px;
 }
 
 .numero h3 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #111;
+    font-size: 2rem;
+    font-weight: normal;
 }
 
-.numero h3 span {
-  font-weight: normal;
-  font-size: 1.2rem;
-  color: #111;
+.numero h3 strong {
+    font-weight: bold;
 }
 
 .numero p {
-  margin-top: 5px;
-  font-size: 1rem;
-  color: #555;
+    font-size: 1rem;
+    color: #333;
 }
+
+
+
 
 .oque-fazemos {
   padding: 4% 30% 0% 30%;
@@ -703,7 +705,7 @@ section li {
 }
 
 .oque-header img {
-  width: 40px;
+  width: 150px;
   margin-bottom: 10px;
 }
 

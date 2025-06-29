@@ -15,10 +15,6 @@ app.get('/empresa', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'empresa.html'));
 });
 
-app.get('/servicos', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'serviços.html'));
-});
-
 app.get('/trabalheconosco', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'trabalheconosco.html'));
 });
