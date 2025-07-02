@@ -94,7 +94,7 @@ header {
 
 
 /* Primeiro container começo*/
-.container {
+.container1 {
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -407,7 +407,7 @@ header {
   align-items: center;
   justify-content: center;
   padding-top: 40px;
-  
+
 }
 
 .overlay {
@@ -537,7 +537,7 @@ textarea {
 }
 
 .travar-scroll {
-  
+
   height: 100vh;
 }
 
@@ -620,79 +620,79 @@ section li {
 
 
 .big-numbers-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0;
-    background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  background-color: #ffffff;
 }
 
 .big-numbers-box {
-    display: flex;
-    width: 90%;
-    height: 80vh;
-    border: 2px solid #ff7b00;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    background-color: white;
+  display: flex;
+  width: 90%;
+  height: 80vh;
+  border: 2px solid #ff7b00;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
 .big-numbers-left {
-    flex: 1;
-    background: url('../Assets/big.png') no-repeat center center;
-    background-size: cover;
+  flex: 1;
+  background: url('../Assets/big.png') no-repeat center center;
+  background-size: cover;
 }
 
 .big-numbers-right {
-    flex: 1;
-    padding: 60px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
+  flex: 1;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
 }
 
 .big-numbers-right::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 5px;
-    height: 100%;
-    background-color: #ff7b00;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  background-color: #ff7b00;
 }
 
 .big-numbers-right h2 {
-    font-size: 3rem;
-    color: #ff7b00;
-    margin-bottom: 20px;
+  font-size: 3rem;
+  color: #ff7b00;
+  margin-bottom: 20px;
 }
 
 .big-numbers-right .subtitulo {
-    font-size: 1.5rem;
-    margin-bottom: 50px;
-    color: black;
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  color: black;
 }
 
 .metricas {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 30px;
 }
 
 .numero h3 {
-    font-size: 2rem;
-    font-weight: normal;
+  font-size: 2rem;
+  font-weight: normal;
 }
 
 .numero h3 strong {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .numero p {
-    font-size: 1rem;
-    color: #333;
+  font-size: 1rem;
+  color: #333;
 }
 
 
@@ -822,7 +822,111 @@ section li {
   line-height: 1.5;
 }
 
+
+
+
+
+
+.parallax-section {
+  background-image: url('../Assets/11.png');
+  /* Troque pelo nome da imagem que você enviou */
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  padding: 100px 20px;
+  color: white;
+}
+
+.parallax-content {
+  max-width: 1200px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 50px;
+  border-radius: 15px;
+  margin: 0 auto;
+  font-family: "Orbitron", sans-serif;
+}
+
+.parallax-content h2 {
+  color: #f09d66;
+  font-size: 42px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.content-block {
+  margin-bottom: 40px;
+}
+
+.content-block h3 {
+  color: #ffa500;
+  font-size: 28px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ff6600;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.content-block p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: white;
+}
+
+.content-block p strong {
+  color: #ffa500;
+}
+
 /* empresa termina aqui */
+/* proposta */
+.form-container {
+  background-color: #fff;
+  padding: 100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  margin: 160px auto 80px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+.form-container p {
+  text-align: center;
+  color: #777;
+  margin-bottom: 20px;
+
+}
+
+input,
+select,
+textarea,
+button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e65c00;
+}
+
 
 
 /* footer*/

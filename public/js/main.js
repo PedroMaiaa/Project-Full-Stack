@@ -97,86 +97,71 @@ document.addEventListener('DOMContentLoaded', () => {
     startAutoSlide();
 });
 
-
-
-
-//mailtrap
-
-(function () {
-  emailjs.init("SEU_USER_ID"); 
-})();
-
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("form-contato");
-  const status = document.getElementById("mensagem-status");
-  const btn = document.getElementById("btn-enviar");
-
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    btn.disabled = true;
-    status.textContent = "Enviando...";
-    status.style.color = "#333";
-
-    emailjs.sendForm("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", "#form-contato")
-      .then(() => {
-        status.textContent = "Mensagem enviada com sucesso!";
-        status.style.color = "green";
-        form.reset();
-      })
-      .catch((error) => {
-        status.textContent = "Erro ao enviar. Tente novamente.";
-        status.style.color = "red";
-        console.error("Erro ao enviar email:", error);
-      })
-      .finally(() => {
-        btn.disabled = false;
-      });
-  });
-});
-
 //captcha
 
-// email_form_handler.js
-
-(function () {
-  emailjs.init("SEU_USER_ID"); // Substitua pelo seu User ID do EmailJS
-})();
 
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("form-contato");
-  const status = document.getElementById("mensagem-status");
-  const btn = document.getElementById("btn-enviar");
+    const form = document.getElementById("form-contato");
+    const status = document.getElementById("mensagem-status");
+    const btn = document.getElementById("btn-enviar");
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    // Verifica se o reCAPTCHA foi validado
-    const recaptchaResponse = grecaptcha.getResponse();
-    if (recaptchaResponse.length === 0) {
-      status.textContent = "Por favor, confirme o reCAPTCHA.";
-      status.style.color = "red";
-      return;
-    }
+        // Verifica se o reCAPTCHA foi validado
+        const recaptchaResponse = grecaptcha.getResponse();
+        if (recaptchaResponse.length === 0) {
+            status.textContent = "Por favor, confirme que você não é um robô.";
+            status.style.color = "red";
+            return;
+        }
 
-    btn.disabled = true;
-    status.textContent = "Enviando...";
-    status.style.color = "#333";
+        btn.disabled = true;
+        status.textContent = "Enviando...";
+        status.style.color = "#333";
 
-    emailjs.sendForm("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", "#form-contato")
-      .then(() => {
-        status.textContent = "Mensagem enviada com sucesso!";
-        status.style.color = "green";
-        form.reset();
-        grecaptcha.reset();
-      })
-      .catch((error) => {
-        status.textContent = "Erro ao enviar. Tente novamente.";
-        status.style.color = "red";
-        console.error("Erro ao enviar email:", error);
-      })
-      .finally(() => {
-        btn.disabled = false;
-      });
-  });
+        // Envia o formulário via EmailJS
+        emailjs.sendForm("service_4d4485w", "template_8x162r5", "#form-contato")
+            .then(() => {
+                status.textContent = "Mensagem enviada com sucesso!";
+                status.style.color = "green";
+                form.reset();
+                grecaptcha.reset();
+            })
+            .catch((error) => {
+                status.textContent = "Erro ao enviar. Por favor, tente novamente.";
+                status.style.color = "red";
+                console.error("Erro ao enviar email:", error);
+                grecaptcha.reset();
+            })
+            .finally(() => {
+                btn.disabled = false;
+            });
+    });
 });
+
+
+
+
+
+
+// emailjs proposta
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('proposta-form');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        emailjs.sendForm('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', this)
+            .then(function () {
+                alert('Proposta enviada com sucesso!');
+                form.reset();
+            }, function (error) {
+                alert('Erro ao enviar. Tente novamente.');
+                console.log('FAILED...', error);
+            });
+    });
+});
+

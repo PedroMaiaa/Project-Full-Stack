@@ -16,6 +16,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap"
         rel="stylesheet">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init('SEU_PUBLIC_KEY');
+        })();
+    </script>
 </head>
 
 <body>
@@ -29,9 +35,34 @@
             <a href="empresa.html">Empresa</a>
             <a href="trabalheconosco.html">Trabalhe Conosco</a>
             <a href="proposta.html">Faça sua Proposta</a>
-            
+
         </div>
     </header>
+
+    <div class="form-container">
+        <h1>Faça Sua Proposta</h1>
+        <p>Por favor, preencha o formulário abaixo com as informações necessárias para a proposta:</p>
+
+        <form>
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+
+            <select name="servico" required>
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="saneamento">Saneamento</option>
+                <option value="edificacoes">Edificações</option>
+                <option value="rodovias">Rodovias</option>
+                <option value="reformas">Reformas</option>
+                <option value="manutencao">Manutenção</option>
+            </select>
+
+            <textarea name="proposta" placeholder="Digite sua proposta..." rows="5" required></textarea>
+
+            <button type="submit">ENVIAR</button>
+        </form>
+    </div>
+
+
     </main>
 
     <footer class="ajp-footer">
@@ -41,7 +72,6 @@
                     <img src="Assets/2 _LOGO/_png (sem fundo)/4 Horizontal Tipográfica/[AJP] logo_horizontal_tipografica_01.png"
                         alt="AJP Engenharia" />
                 </div>
-
                 <div class="footer-menus">
                     <div class="footer-column">
                         <h4>AJP ENGENHARIA</h4>
