@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        emailjs.sendForm('service_44qyope', 'template_zx5y9uc', this)
+        emailjs.sendForm('service_44qyope', 'template_8x162r5', this)
             .then(function () {
                 showToast('Proposta enviada com sucesso!');
                 form.reset();
