@@ -99,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //captcha
 
-
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("form-contato");
     const status = document.getElementById("mensagem-status");
@@ -121,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
         status.style.color = "#333";
 
         // Envia o formulário via EmailJS
-        emailjs.sendForm("service_4d4485w", "template_8x162r5", "#form-contato")
+        emailjs.sendForm("service_4d4485w", "template_zx5y9uc", "#form-contato")
             .then(() => {
                 status.textContent = "Mensagem enviada com sucesso!";
                 status.style.color = "green";
@@ -150,18 +149,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('proposta-form');
+    const toast = document.getElementById('toast');
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        emailjs.sendForm('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', this)
+        emailjs.sendForm('service_44qyope', 'template_zx5y9uc', this)
             .then(function () {
-                alert('Proposta enviada com sucesso!');
+                showToast('Proposta enviada com sucesso!');
                 form.reset();
             }, function (error) {
-                alert('Erro ao enviar. Tente novamente.');
+                showToast('Erro ao enviar. Tente novamente.');
                 console.log('FAILED...', error);
             });
     });
+
+    function showToast(message) {
+        toast.textContent = message;
+        toast.classList.remove('hidden');
+        toast.classList.add('show');
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 500);
+        }, 3000);
+    }
 });
 

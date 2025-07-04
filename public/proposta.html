@@ -19,9 +19,11 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         (function () {
-            emailjs.init('SEU_PUBLIC_KEY');
+            emailjs.init('NhbGTd547m-CHQMDr');
         })();
     </script>
+    <meta name="description" content="A AJP Engenharia oferece soluções inovadoras em engenharia elétrica, automação e infraestrutura, com qualidade, eficiência e foco nas necessidades do cliente.">
+
 </head>
 
 <body>
@@ -43,7 +45,7 @@
         <h1>Faça Sua Proposta</h1>
         <p>Por favor, preencha o formulário abaixo com as informações necessárias para a proposta:</p>
 
-        <form>
+        <form id="proposta-form">
             <input type="text" name="nome" placeholder="Nome" required>
             <input type="email" name="email" placeholder="E-mail" required>
 
@@ -111,9 +113,9 @@
             </div>
         </div>
     </footer>
-
+    <script src="Js/email_form_handler.js"></script>
     <script src="Js/main.js"></script>
-
+    <div id="toast" class="toast hidden">Proposta enviada com sucesso!</div>
 </body>
 
 </html>

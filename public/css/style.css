@@ -906,7 +906,7 @@ section li {
 input,
 select,
 textarea,
-button {
+.form-container button {
   width: 100%;
   padding: 12px;
   margin-bottom: 15px;
@@ -915,7 +915,7 @@ button {
   font-size: 16px;
 }
 
-button {
+.form-container button {
   background-color: #ff6600;
   color: white;
   border: none;
@@ -926,6 +926,33 @@ button {
 button:hover {
   background-color: #e65c00;
 }
+
+/* pop up */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50; /* Cor verde de sucesso */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+    z-index: 1000;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hidden {
+    display: none;
+}
+
 
 
 
@@ -1025,9 +1052,108 @@ button:hover {
 }
 
 /* responsividade começo*/
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+
+  header {
+    padding: 15px 30px;
+  }
+
+  .btns a {
+    margin-left: 20px;
+  }
+
+  .ajp-content {
+    padding: 30px 20px;
+  }
+
+  .ajp-content h2 {
+    font-size: 2.2rem;
+  }
+
   .product-Name {
-    font-size: 1.5rem;
+    font-size: 2rem;
+  }
+
+  .product-Desc {
+    font-size: 1.2rem;
+  }
+
+  .clientes-conteudo {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .clientes-imagem {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .contato-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-contato {
+    padding-left: 0;
+  }
+
+  .big-numbers-box {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .big-numbers-left {
+    min-height: 300px;
+  }
+
+  .metricas {
+    grid-template-columns: 1fr;
+  }
+
+  .form-container {
+    padding: 60px 20px;
+  }
+
+  .parallax-section {
+    background-attachment: scroll;
+    padding: 80px 20px;
+  }
+
+  .parallax-content h2 {
+    font-size: 36px;
+  }
+
+  .content-block h3 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  header {
+    flex-direction: column;
+    padding: 10px 20px;
+  }
+
+  .btns {
+    margin-top: 10px;
+  }
+
+  .btns a {
+    margin-left: 15px;
+    font-size: 0.9rem;
+  }
+
+  .ajp-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .ajp-content p {
+    font-size: 1rem;
+  }
+
+  .product-Name {
+    font-size: 1.8rem;
   }
 
   .product-Desc {
@@ -1036,15 +1162,162 @@ button:hover {
 
   .btn {
     padding: 8px 16px;
+    font-size: 0.9rem;
   }
 
-  header {
-    padding: 15px 20px;
+  .clientes-header h2 {
+    font-size: 2rem;
+  }
+
+  .clientes-texto p {
+    font-size: 1rem;
+  }
+
+  .clientes-imagem img {
+    max-width: 100%;
+  }
+
+  .contato-left h2 {
+    font-size: 1.5rem;
+  }
+
+  .contato-left h3 {
+    font-size: 1.2rem;
+  }
+
+  .membro h4 {
+    font-size: 0.9rem;
+  }
+
+  .membro p {
+    font-size: 0.8rem;
+  }
+
+  .captcha {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .big-numbers-right h2 {
+    font-size: 2.2rem;
+  }
+
+  .big-numbers-right .subtitulo {
+    font-size: 1.2rem;
+  }
+
+  .oque-fazemos {
+    padding: 4% 10% 0% 10%;
+  }
+
+  .servicos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .parallax-content {
+    padding: 30px 20px;
+  }
+
+  .parallax-content h2 {
+    font-size: 28px;
+  }
+
+  .content-block h3 {
+    font-size: 20px;
+  }
+
+  .content-block p {
+    font-size: 14px;
+  }
+
+  .form-container {
+    padding: 40px 20px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .footer-menus {
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .logo img {
+    height: 50px;
   }
 
   .btns a {
-    margin-left: 15px;
+    font-size: 0.8rem;
+  }
+
+  .product-Name {
+    font-size: 1.5rem;
+  }
+
+  .product-Desc {
+    font-size: 0.9rem;
+  }
+
+  .clientes-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .contato-left h2 {
+    font-size: 1.3rem;
+  }
+
+  .contato-left h3 {
+    font-size: 1.1rem;
+  }
+
+  .membro img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .big-numbers-right h2 {
+    font-size: 1.8rem;
+  }
+
+  .big-numbers-right .subtitulo {
+    font-size: 1rem;
+  }
+
+  .oque-fazemos {
+    padding: 4% 5% 0% 5%;
+  }
+
+  .parallax-content {
+    padding: 20px 10px;
+  }
+
+  .parallax-content h2 {
+    font-size: 24px;
+  }
+
+  .content-block h3 {
+    font-size: 18px;
+  }
+
+  .content-block p {
+    font-size: 13px;
+  }
+
+  .form-container {
+    padding: 30px 15px;
+  }
+
+  .footer-column a {
+    font-size: 0.8rem;
   }
 }
+
 
 /* responsividade fim*/
