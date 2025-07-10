@@ -5,6 +5,13 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+
+const nodemailer = require('nodemailer');
+const cors = require('cors');
+app.use(cors());
+app.use(express.json());
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
@@ -27,4 +34,12 @@ app.get('/proposta', (req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
   console.log(` Servidor estático iniciado com sucesso!`);
   console.log(` Acessível na porta: ${PORT}`);
+});
+
+
+
+
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
 });

@@ -16,13 +16,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        (function () {
-            emailjs.init('NhbGTd547m-CHQMDr');
-        })();
-    </script>
-    <meta name="description" content="A AJP Engenharia oferece soluções inovadoras em engenharia elétrica, automação e infraestrutura, com qualidade, eficiência e foco nas necessidades do cliente.">
+    <meta name="description"
+        content="A AJP Engenharia oferece soluções inovadoras em engenharia elétrica, automação e infraestrutura, com qualidade, eficiência e foco nas necessidades do cliente.">
 
 </head>
 
@@ -45,25 +40,27 @@
         <h1>Faça Sua Proposta</h1>
         <p>Por favor, preencha o formulário abaixo com as informações necessárias para a proposta:</p>
 
-        <form id="proposta-form">
-            <input type="text" name="nome" placeholder="Nome" required>
-            <input type="email" name="email" placeholder="E-mail" required>
-
-            <select name="servico" required>
+        <form id="form-contato" action="https://formsubmit.co/pedromaianor@gmail.com" method="POST">
+            <input type="text" name="Nome" placeholder="Nome" required> <input type="email" name="Email"
+                placeholder="E-mail" required> <select name="Servico Solicitado" required>
                 <option value="" disabled selected>Selecione uma opção</option>
-                <option value="saneamento">Saneamento</option>
-                <option value="edificacoes">Edificações</option>
-                <option value="rodovias">Rodovias</option>
-                <option value="reformas">Reformas</option>
-                <option value="manutencao">Manutenção</option>
+                <option value="Saneamento">Saneamento</option>
+                <option value="Edificacoes">Edificações</option>
+                <option value="Rodovias">Rodovias</option>
+                <option value="Reformas">Reformas</option>
+                <option value="Manutencao">Manutenção</option>
             </select>
 
-            <textarea name="proposta" placeholder="Digite sua proposta..." rows="5" required></textarea>
+            <input type="hidden" name="_subject" value="Nova Proposta Recebida - AJP Engenharia">
+
+            <textarea name="Mensagem da Proposta" placeholder="Digite sua proposta..." rows="5" required></textarea>
+            <input type="hidden" name="_captcha" value="false"> <input type="hidden" name="_next"
+                value="https://ajp-engenharia.com/proposta.html">
 
             <button type="submit">ENVIAR</button>
+            <p id="mensagem-status"></p>
         </form>
     </div>
-
 
     </main>
 
@@ -93,7 +90,7 @@
                     </div>
 
                     <div class="footer-social">
-                        <a href="https://www.instagram.com" target="_blank">
+                        <a href="https://www.instagram.com/engenharia_ajp/" target="_blank">
                             <img src="Assets/instagram.png" alt="Instagram">
                         </a>
                         <a href="https://www.facebook.com" target="_blank">
@@ -113,8 +110,9 @@
             </div>
         </div>
     </footer>
-    <script src="Js/email_form_handler.js"></script>
-    <script src="Js/main.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="js/email_form_handler.js"></script>
     <div id="toast" class="toast hidden">Proposta enviada com sucesso!</div>
 </body>
 

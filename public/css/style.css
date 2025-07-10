@@ -903,6 +903,20 @@ section li {
 
 }
 
+.mensagem-sucesso {
+    color: green;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.mensagem-erro {
+    color: red;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+}
+
 input,
 select,
 textarea,

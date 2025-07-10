@@ -16,14 +16,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap"
         rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js">
-        (function () {
-            emailjs.init("NhbGTd547m-CHQMDr");
-        })();
-    </script>
-    <meta name="description" content="A AJP Engenharia oferece soluções inovadoras em engenharia elétrica, automação e infraestrutura, com qualidade, eficiência e foco nas necessidades do cliente.">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <meta name="description"
+        content="A AJP Engenharia oferece soluções inovadoras em engenharia elétrica, automação e infraestrutura, com qualidade, eficiência e foco nas necessidades do cliente.">
 </head>
 
 <body class="travar-scroll">
@@ -37,7 +31,6 @@
             <a href="empresa.html">Empresa</a>
             <a href="trabalheconosco.html">Trabalhe Conosco</a>
             <a href="proposta.html">Faça sua Proposta</a>
-
         </div>
     </header>
     <main>
@@ -53,13 +46,14 @@
                     <p class="intro-text">
                         Precisa de ajuda ou quer tirar dúvidas? Fale conosco! Retornaremos o mais rápido possível.
                     </p>
-                    <form id="form-contato">
-                        <input type="text" name="nome" placeholder="Seu nome" required />
+                    <form id="form-contato" action="https://formsubmit.co/pedromaianor@gmail.com" method="POST">
+                        <input type="text" name="Nome" placeholder="Seu nome" required />
                         <div class="linha">
-                            <input type="email" name="email" placeholder="Seu email" required />
-                            <input type="tel" name="telefone" placeholder="Seu telefone" required />
+                            <input type="email" name="Email" placeholder="Seu email" required /> <input type="tel"
+                                name="Telefone" placeholder="Seu telefone" required />
                         </div>
-                        <textarea name="mensagem" placeholder="Escreva sua mensagem" required></textarea>
+                        <textarea name="Mensagem" placeholder="Escreva sua mensagem" required></textarea> <input
+                            type="hidden" name="_subject" value="Novo Contato - Trabalhe Conosco">
                         <div class="captcha">
                             <div class="g-recaptcha" data-sitekey="6LfbQXcrAAAAAALri8EMdYTulae7pilTjTUIpGPP"></div>
                         </div>
@@ -118,7 +112,7 @@
                         </div>
 
                         <div class="footer-social">
-                            <a href="https://www.instagram.com" target="_blank">
+                            <a href="https://www.instagram.com/engenharia_ajp/" target="_blank">
                                 <img src="Assets/instagram.png" alt="Instagram">
                             </a>
                             <a href="https://www.facebook.com" target="_blank">
@@ -138,26 +132,13 @@
                 </div>
             </div>
         </footer>
-
-
-
-
     </main>
 
-
-
-
-
-
-
-
-
-
-
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script src="Js/email_form_handler.js"></script>
     <div id="toast" class="toast hidden">Proposta enviada com sucesso!</div>
 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script src="js/email_form_handler.js"></script>
 </body>
 
 </html>

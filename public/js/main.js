@@ -97,84 +97,57 @@ document.addEventListener('DOMContentLoaded', () => {
     startAutoSlide();
 });
 
-//captcha
 
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("form-contato");
-    const status = document.getElementById("mensagem-status");
-    const btn = document.getElementById("btn-enviar");
+const { tipo, recaptcha } = req.body;
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        // Verifica se o reCAPTCHA foi validado
-        const recaptchaResponse = grecaptcha.getResponse();
-        if (recaptchaResponse.length === 0) {
-            status.textContent = "Por favor, confirme que você não é um robô.";
-            status.style.color = "red";
-            return;
+// Verificar reCAPTCHA com Google
+try {
+    const recaptchaVerify = await axios.post(
+        `https://www.google.com/recaptcha/api/siteverify`,
+        null,
+        {
+            params: {
+                secret: '6LfbQXcrAAAAAALri8EMdYTulae7pilTjTUIpGPP',
+                response: recaptcha
+            }
         }
+    );
 
-        btn.disabled = true;
-        status.textContent = "Enviando...";
-        status.style.color = "#333";
-
-        // Envia o formulário via EmailJS
-        emailjs.sendForm("service_4d4485w", "template_zx5y9uc", "#form-contato")
-            .then(() => {
-                status.textContent = "Mensagem enviada com sucesso!";
-                status.style.color = "green";
-                form.reset();
-                grecaptcha.reset();
-            })
-            .catch((error) => {
-                status.textContent = "Erro ao enviar. Por favor, tente novamente.";
-                status.style.color = "red";
-                console.error("Erro ao enviar email:", error);
-                grecaptcha.reset();
-            })
-            .finally(() => {
-                btn.disabled = false;
-            });
-    });
-});
+    const { success, score, action } = recaptchaVerify.data;
+    if (!success) {
+        return res.status(403).json({ message: 'Falha na verificação do reCAPTCHA.' });
+    }
+} catch (err) {
+    console.error("Erro ao verificar reCAPTCHA:", err);
+    return res.status(500).json({ message: 'Erro ao validar reCAPTCHA.' });
+}
 
 
 
+app.post('/send', async (req, res) => {
+    const { name, email, message } = req.body;
 
-
-
-// emailjs proposta
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('proposta-form');
-    const toast = document.getElementById('toast');
-
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        emailjs.sendForm('service_44qyope', 'template_8x162r5', this)
-            .then(function () {
-                showToast('Proposta enviada com sucesso!');
-                form.reset();
-            }, function (error) {
-                showToast('Erro ao enviar. Tente novamente.');
-                console.log('FAILED...', error);
-            });
+    // Configurar o SMTP (exemplo usando Gmail)
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'pedromaianor@gmail.com',       // Seu e-mail
+            pass: '201025061511aA#' // Senha ou senha de app
+        }
     });
 
-    function showToast(message) {
-        toast.textContent = message;
-        toast.classList.remove('hidden');
-        toast.classList.add('show');
+    let mailOptions = {
+        from: email,
+        to: 'pedromaianor@gmail.com',
+        subject: `Mensagem de ${name}`,
+        text: message
+    };
 
-        setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 500);
-        }, 3000);
+    try {
+        await transporter.sendMail(mailOptions);
+        res.status(200).json({ message: 'E-mail enviado com sucesso!' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Falha ao enviar e-mail.' });
     }
 });
-
