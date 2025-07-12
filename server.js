@@ -43,3 +43,33 @@ app.listen(PORT, '0.0.0.0', () => {
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
+
+
+
+app.post('/send', async (req, res) => {
+    const { name, email, message } = req.body;
+
+    // Configurar o SMTP (exemplo usando Gmail)
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'pedromaianor@gmail.com',       // Seu e-mail
+            pass: '201025061511aA#' // Senha ou senha de app
+        }
+    });
+
+    let mailOptions = {
+        from: email,
+        to: 'pedromaianor@gmail.com',
+        subject: `Mensagem de ${name}`,
+        text: message
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        res.status(200).json({ message: 'E-mail enviado com sucesso!' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Falha ao enviar e-mail.' });
+    }
+});

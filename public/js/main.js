@@ -97,33 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
     startAutoSlide();
 });
 
-
-const { tipo, recaptcha } = req.body;
-
-// Verificar reCAPTCHA com Google
-try {
-    const recaptchaVerify = await axios.post(
-        `https://www.google.com/recaptcha/api/siteverify`,
-        null,
-        {
-            params: {
-                secret: '6LfbQXcrAAAAAALri8EMdYTulae7pilTjTUIpGPP',
-                response: recaptcha
-            }
-        }
-    );
-
-    const { success, score, action } = recaptchaVerify.data;
-    if (!success) {
-        return res.status(403).json({ message: 'Falha na verificação do reCAPTCHA.' });
-    }
-} catch (err) {
-    console.error("Erro ao verificar reCAPTCHA:", err);
-    return res.status(500).json({ message: 'Erro ao validar reCAPTCHA.' });
-}
-
-
-
 app.post('/send', async (req, res) => {
     const { name, email, message } = req.body;
 
@@ -151,3 +124,4 @@ app.post('/send', async (req, res) => {
         res.status(500).json({ message: 'Falha ao enviar e-mail.' });
     }
 });
+

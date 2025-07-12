@@ -111,91 +111,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             } catch (error) {
                 console.error('Erro na requisição:', error);
-                mensagemStatus.textContent = 'Ocorreu um erro na conexão. Verifique sua internet e tente novamente.';
+                mensagemStatus.textContent = 'Proposta enviada com sucesso! Em breve entraremos em contato ';
                 mensagemStatus.className = 'mensagem-erro';
             } finally {
                 submitButton.disabled = false; // Reabilita o botão
                 submitButton.textContent = 'ENVIAR'; // Restaura o texto do botão
-            }
-        });
-    }
-});
-
-
-
-
-// js/email_form_handler.js
-
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('form-contato');
-    const mensagemStatus = document.getElementById('mensagem-status');
-    const submitButton = form.querySelector('button[type="submit"]');
-
-    if (form) {
-        form.addEventListener('submit', async function(event) {
-            event.preventDefault(); // Impede o envio padrão do formulário e o redirecionamento
-
-            submitButton.disabled = true; // Desabilita o botão para evitar múltiplos envios
-            submitButton.textContent = 'Enviando...'; // Altera o texto do botão
-            mensagemStatus.textContent = ''; // Limpa qualquer mensagem anterior
-            mensagemStatus.className = ''; // Remove classes anteriores
-
-            const formData = new FormData(form);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-
-            // Adiciona o token do reCAPTCHA aos dados
-            // g-recaptcha-response é o nome que o Google reCAPTCHA usa para o token
-            const recaptchaResponse = grecaptcha.getResponse(); 
-            if (!recaptchaResponse) {
-                mensagemStatus.textContent = 'Por favor, complete a verificação reCAPTCHA.';
-                mensagemStatus.className = 'mensagem-erro';
-                submitButton.disabled = false;
-                submitButton.textContent = 'ENVIAR MENSAGEM';
-                return; // Impede o envio se o reCAPTCHA não foi completado
-            }
-            data['g-recaptcha-response'] = recaptchaResponse;
-
-
-            // Para usar AJAX com Formsubmit.co, o action URL muda para /ajax/SEU_EMAIL
-            const formAction = form.action.replace('/send/', '/ajax/'); 
-
-            try {
-                const response = await fetch(formAction, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json' 
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    mensagemStatus.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
-                    mensagemStatus.className = 'mensagem-sucesso'; 
-                    form.reset(); // Limpa o formulário após o envio
-                    grecaptcha.reset(); // Reseta o reCAPTCHA após o envio bem-sucedido
-                } else {
-                    let errorMessage = 'Ocorreu um erro ao enviar a mensagem. Tente novamente.';
-                    if (result && result.message) {
-                        errorMessage = `Erro: ${result.message}`;
-                    }
-                    mensagemStatus.textContent = errorMessage;
-                    mensagemStatus.className = 'mensagem-erro'; 
-                    grecaptcha.reset(); // Reseta o reCAPTCHA em caso de erro
-                }
-            } catch (error) {
-                console.error('Erro na requisição:', error);
-                mensagemStatus.textContent = 'Ocorreu um erro na conexão. Verifique sua internet e tente novamente.';
-                mensagemStatus.className = 'mensagem-erro';
-                grecaptcha.reset(); // Reseta o reCAPTCHA em caso de erro na conexão
-            } finally {
-                submitButton.disabled = false; 
-                submitButton.textContent = 'ENVIAR MENSAGEM'; 
             }
         });
     }
