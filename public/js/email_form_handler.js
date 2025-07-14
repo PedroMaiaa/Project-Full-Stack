@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Accept": "application/json" // Essencial para receber a resposta JSON do Formsubmit.co
+                    "Accept": "application/json"    // Essencial para receber a resposta JSON do Formsubmit.co
                 },
                 body: JSON.stringify(data)
             });
