@@ -46,7 +46,7 @@
                     <p class="intro-text">
                         Precisa de ajuda ou quer tirar dúvidas? Fale conosco! Retornaremos o mais rápido possível.
                     </p>
-                    <form id="form-contato" action="https://formsubmit.co/pedromaianor@gmail.com" method="POST">
+                    <form id="form-contato" action="https://formsubmit.co/pedromaianor@gmail.com" method="POST"> <!--trocar-->
                         <input type="text" name="Nome" placeholder="Seu nome" required />
                         <div class="linha">
                             <input type="email" name="Email" placeholder="Seu email" required /> <input type="tel"
@@ -54,6 +54,7 @@
                         </div>
                         <textarea name="Mensagem" placeholder="Escreva sua mensagem" required></textarea> <input
                             type="hidden" name="_subject" value="Novo Contato - Trabalhe Conosco">
+                            <input type="hidden" name="_captcha" value="false">
                         <button id="btn-enviar" type="submit">ENVIAR MENSAGEM</button>
                         <p id="mensagem-status"></p>
                     </form>

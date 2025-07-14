@@ -53,14 +53,14 @@ app.post('/send', async (req, res) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'pedromaianor@gmail.com',       // Seu e-mail
-            pass: '201025061511aA#' // Senha ou senha de app
+            user: 'pedromaianor@gmail.com',       // Seu e-mail //trocar
+            pass: '201025061511aA#' // Senha ou senha de app trocar
         }
     });
 
     let mailOptions = {
         from: email,
-        to: 'pedromaianor@gmail.com',
+        to: 'pedromaianor@gmail.com', //trocar
         subject: `Mensagem de ${name}`,
         text: message
     };

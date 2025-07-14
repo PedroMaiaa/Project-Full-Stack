@@ -1,122 +1,62 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("form-contato");
-    if (!form) return;
+    if (!form) return; // Garante que o formulário existe na página
 
-    form.addEventListener("submit", async function (e) {
-        e.preventDefault();
+    const submitButton = form.querySelector('button[type="submit"]');
+    const mensagemStatus = document.getElementById('mensagem-status');
 
-        const status = document.getElementById("mensagem-status");
-        const recaptchaResponse = grecaptcha.getResponse?.() ?? "";
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault(); // Impede o envio padrão do formulário e o redirecionamento
 
-        if (recaptchaResponse.length === 0) {
-            status.textContent = "Por favor, confirme que você não é um robô.";
-            status.style.color = "red";
-            return;
-        }
+        submitButton.disabled = true; // Desabilita o botão para evitar múltiplos envios
+        submitButton.textContent = 'Enviando...'; // Altera o texto do botão
+        mensagemStatus.textContent = ''; // Limpa qualquer mensagem anterior
+        mensagemStatus.className = ''; // Remove classes de estilização anteriores
 
         const formData = new FormData(form);
-        const pathname = window.location.pathname;
+        const data = {};
+        // Coleta todos os dados do formulário com seus nomes originais
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
 
-        let payload = {};
-
-        if (pathname.includes("proposta")) {
-            payload = {
-                tipo: "Proposta",
-                nome: formData.get("nome"),
-                email: formData.get("email"),
-                servico: formData.get("servico"),
-                proposta: formData.get("proposta")
-            };
-        } else if (pathname.includes("trabalhe")) {
-            payload = {
-                tipo: "Trabalhe Conosco",
-                nome: formData.get("nome"),
-                email: formData.get("email"),
-                telefone: formData.get("telefone"),
-                mensagem: formData.get("mensagem")
-            };
-        }
+        // Corrige a URL para usar o endpoint AJAX do Formsubmit.co
+        // Ex: de "https://formsubmit.co/seuemail@dominio.com" para "https://formsubmit.co/ajax/seuemail@dominio.com"
+        const formAction = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
 
         try {
-            const response = await fetch("/enviar-email", {
+            const response = await fetch(formAction, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Accept": "application/json" // Essencial para receber a resposta JSON do Formsubmit.co
                 },
-                body: JSON.stringify(payload)
+                body: JSON.stringify(data)
             });
 
             const result = await response.json();
-            status.textContent = result.message;
-            status.style.color = "green";
-            form.reset();
-            grecaptcha.reset?.();
-        } catch (err) {
-            console.error(err);
-            status.textContent = "Erro ao enviar. Tente novamente.";
-            status.style.color = "red";
+
+            if (response.ok) {
+                mensagemStatus.textContent = 'Sua mensagem foi enviada com sucesso! Em breve entraremos em contato.';
+                mensagemStatus.style.color = "green";
+                form.reset(); // Limpa o formulário após o envio bem-sucedido
+            } else {
+                // Trata erros retornados pelo Formsubmit.co
+                let errorMessage = 'Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.';
+                if (result && result.message) {
+                    errorMessage = `Erro: ${result.message}`;
+                }
+                mensagemStatus.textContent = errorMessage;
+                mensagemStatus.style.color = "red";
+            }
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+            // Mensagem genérica para erros de rede ou outros problemas inesperados
+            mensagemStatus.textContent = 'Houve um problema de conexão ou no servidor. Tente novamente mais tarde.';
+            mensagemStatus.style.color = "red";
+        } finally {
+            submitButton.disabled = false; // Reabilita o botão
+            submitButton.textContent = 'ENVIAR'; // Restaura o texto original do botão
         }
     });
-});
-
-// js/email_form_handler.js
-
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('form-contato');
-    const mensagemStatus = document.getElementById('mensagem-status');
-    const submitButton = form.querySelector('button[type="submit"]');
-
-    if (form) {
-        form.addEventListener('submit', async function (event) {
-            event.preventDefault(); // Impede o envio padrão do formulário e o redirecionamento
-
-            submitButton.disabled = true; // Desabilita o botão para evitar múltiplos envios
-            submitButton.textContent = 'Enviando...'; // Altera o texto do botão
-            mensagemStatus.textContent = ''; // Limpa qualquer mensagem anterior
-            mensagemStatus.className = ''; // Remove classes anteriores
-
-            const formData = new FormData(form);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-
-            // Para usar AJAX com Formsubmit.co, o action URL muda para /ajax/SEU_EMAIL
-            const formAction = form.action.replace('/send/', '/ajax/');
-
-            try {
-                const response = await fetch(formAction, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json' // Importante para receber resposta JSON
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    mensagemStatus.textContent = 'Proposta enviada com sucesso! Em breve entraremos em contato.';
-                    mensagemStatus.className = 'mensagem-sucesso'; // Adiciona uma classe para estilização
-                    form.reset(); // Limpa o formulário após o envio
-                } else {
-                    // Trata erros específicos do Formsubmit.co, se houver
-                    let errorMessage = 'Ocorreu um erro ao enviar a proposta. Tente novamente.';
-                    if (result && result.message) {
-                        errorMessage = `Erro: ${result.message}`;
-                    }
-                    mensagemStatus.textContent = errorMessage;
-                    mensagemStatus.className = 'mensagem-erro'; // Adiciona uma classe para estilização
-                }
-            } catch (error) {
-                console.error('Erro na requisição:', error);
-                mensagemStatus.textContent = 'Proposta enviada com sucesso! Em breve entraremos em contato ';
-                mensagemStatus.className = 'mensagem-erro';
-            } finally {
-                submitButton.disabled = false; // Reabilita o botão
-                submitButton.textContent = 'ENVIAR'; // Restaura o texto do botão
-            }
-        });
-    }
 });
