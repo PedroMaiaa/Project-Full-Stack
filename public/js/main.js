@@ -101,13 +101,7 @@ app.post('/send', async (req, res) => {
     const { name, email, message } = req.body;
 
     // Configurar o SMTP (exemplo usando Gmail)
-    let transporter = nodemailer.createTransport({
-        service: 'gmail', //trocar
-        auth: {
-            user: 'comercial@ajpengenharia.com.br',       // trocar
-            pass: 'Fmr33856' // Senha trocar
-        }
-    });
+    ;
 
     let mailOptions = {
         from: email,
